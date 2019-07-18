@@ -5,6 +5,12 @@ services:
       context: ./nginx
     ports:
       - '8000:80'
+    depends_on:
+      - django_server
+    volumes:
+      - ./server/mysite/static:/static
   django_server:
     build:
       context: ./server
+    volumes:
+      - ./server/mysite/static:/static
